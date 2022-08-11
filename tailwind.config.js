@@ -23,7 +23,7 @@ module.exports = {
 				},
 			},
       width: {
-        fit: 'width: fit-content;'
+        fit: 'fit-content;'
       }
 		},
 	},

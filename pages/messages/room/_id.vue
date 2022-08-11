@@ -20,23 +20,16 @@ export default class MessagesRoom extends mixins(SocketRoomsMixin, SocketMessage
     return `room-${this.roomId}`;
   }
 
-  activated()  {
+  get token(): any {
+    return this.$store.getters['auth/getCredentials']?.token
+  }
+
+    async activated()  {
     this.$socket.client.on(this.socketRoomName, this.handleMessages);
-    this.$store.commit('room/ADD_ROOM', {
-      name: "Some name",
-      id: this.roomId,
-      avatar: 'https://i.pravatar.cc/40',
-      lastMessage: {
-          message: 'asdfasd',
-          user: {
-            id: 2,
-            name: "Test 2",
-            avatar: 'https://i.pravatar.cc/60'
-          },
-          createdAt: '08:09'
-        }
+    const headers = {
+      authorization: `Bearer ${this.token}`
     }
-    )
+    await this.$store.dispatch('room/fetchRoomById', {headers, roomId: this.roomId})
   }
 
   handleMessages(payload: any): void {

@@ -10,7 +10,7 @@
         <div class="shadow-md rounded-md p-2 w-fit" style="width: fit-content" :class="messageClass(message)">
           <div class="break-all">{{message.message}}</div>
           <div
-            :class="dateClass(message)" class="text-xs text-gray-600">{{message.createdAt}}</div>
+            :class="dateClass(message)" class="text-xs text-gray-600">{{message.createAt}}</div>
         </div>
       </div>
     </div>

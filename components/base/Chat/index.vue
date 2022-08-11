@@ -25,11 +25,11 @@
             <div class="font-bold">
               {{room.name}}
             </div>
-            <div class="text-sm text-gray-500 leading-3">
-              {{room.lastMessage.createdAt}}
+            <div v-if="room.lastMessage" class="text-sm text-gray-500 leading-3">
+              {{room.lastMessage.createAt}}
             </div>
           </div>
-          <div>
+          <div v-if="room.lastMessage">
            <span v-if="room.isGroup" class="font-bold">
              {{room.lastMessage.user.name}}:
            </span>

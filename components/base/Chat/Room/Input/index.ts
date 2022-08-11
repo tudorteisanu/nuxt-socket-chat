@@ -21,7 +21,7 @@ export default class Messages extends Vue {
     const payload = {
       roomId: this.roomId,
       message: this.message,
-      createdAt: `${new Date().getHours().toFixed(2)}:${new Date().getMinutes().toFixed(2)}`,
+      createAt: `${new Date().getHours().toFixed(2)}:${new Date().getMinutes().toFixed(2)}`,
       user: {
         id: this.userId,
         name: "theo",

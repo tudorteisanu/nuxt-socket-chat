@@ -1,6 +1,6 @@
 <template>
-  <div >
-    <Chat />
+  <div>
+    <Chat/>
   </div>
 </template>
 
@@ -11,9 +11,13 @@ import {Component, Vue} from "nuxt-property-decorator";
   layout: 'default'
 })
 export default class Messages extends Vue {
+  get credentials(): any {
+    return this.$store.getters['auth/getCredentials'] || {}
+  }
 
-  mounted(): void {
-    this.$store.commit('room/SET_ROOMS', [])
+  async fetch(): Promise<void> {
+    const {token} = this.credentials
+    await this.$store.dispatch('room/fetchRooms', {authorization: token})
   }
 }
 </script>
